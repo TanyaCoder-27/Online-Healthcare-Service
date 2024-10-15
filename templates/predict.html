@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Symptom Checker</h1>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="user_input">Describe your symptoms:</label>
+                <textarea class="form-control" id="user_input" name="user_input" rows="3" placeholder="Type your symptoms here..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+        {% if prediction %}
+            <h2 class="mt-5">Prediction: {{ prediction }}</h2>
+            <p><strong>Disease:</strong> {{ info['Disease'] }}</p>
+            <p><strong>Description:</strong> {{ info['Description'] }}</p>
+            <p><strong>Precautions:</strong> {{ info['Precautions'] }}</p>
+            <p><strong>Food to Take:</strong> {{ info['Food to Take'] }}</p>
+            <p><strong>Food to Avoid:</strong> {{ info['Food to Avoid'] }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
